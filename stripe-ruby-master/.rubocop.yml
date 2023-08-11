@@ -1,0 +1,72 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  DisplayCopNames: true
+  TargetRubyVersion: 2.3
+
+Layout/CaseIndentation:
+  EnforcedStyle: end
+
+Layout/FirstArrayElementIndentation:
+  EnforcedStyle: consistent
+
+Layout/FirstHashElementIndentation:
+  EnforcedStyle: consistent
+
+Layout/LineLength:
+  Exclude:
+    - "lib/stripe/object_types.rb"
+    - "lib/stripe/resources/**/*.rb"
+    - "test/**/*.rb"
+
+Metrics/BlockLength:
+  Max: 40
+  Exclude:
+    # `context` in tests are blocks and get quite large, so exclude the test
+    # directory from having to adhere to this rule.
+    - "test/**/*.rb"
+
+Metrics/ClassLength:
+  Exclude:
+    # Test classes get quite large, so exclude the test directory from having
+    # to adhere to this rule.
+    - "test/**/*.rb"
+
+Metrics/MethodLength:
+  # There's ~2 long methods in `StripeClient` and one in `NestedResource`. If
+  # we want to truncate those a little, we could move this to be closer to ~30
+  # (but the default of 10 is probably too short).
+  Max: 55
+
+Metrics/ModuleLength:
+  Enabled: false
+
+Style/AccessModifierDeclarations:
+  EnforcedStyle: inline
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: always
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
+Style/NumericPredicate:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: consistent_comma
