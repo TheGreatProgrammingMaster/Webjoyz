@@ -31,3 +31,7 @@ footer {
     color: #fff;
     padding: 20px;
 }
+
+iframe {
+    border: none;
+}
